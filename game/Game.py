@@ -7,6 +7,13 @@ from game.SpaceShip import SpaceShip
 
 class Game:
     def __init__(self, screen):
+        """
+        Initializes the game.
+
+        Args:
+        - screen: Pygame screen surface
+        """
+
         self.screen = screen
         self.spaceShip = SpaceShip(self.screen)
         self.bullets = []
@@ -21,11 +28,19 @@ class Game:
         self.introduction = True
 
     def startIntroduction(self):
+        """
+        Initializes the introduction phase of the game.
+        """
+
         for i in range(self.asteroidsCountInitial):
             self.createRandomAsteroid()
         self.introduction = False
     
     def restartGame(self):
+        """
+        Restarts the game with initial settings.
+        """
+
         self.spaceShip = SpaceShip(self.screen)
         self.bullets = []
         self.asteroids = []
@@ -41,6 +56,10 @@ class Game:
             self.createRandomAsteroid()
 
     def createRandomAsteroid(self):
+        """
+        Creates a random asteroid and adds it to the list.
+        """
+
         side = random.choice(["top", "bottom", "left", "right"])
         position = pygame.math.Vector2(0, 0)
         radius = ASTEROID_RADIUS
@@ -68,6 +87,10 @@ class Game:
         self.asteroids.append(newAsteroid)
 
     def bulletCollisionWithAsteroid(self):
+        """
+        Checks for collisions between bullets and asteroids.
+        """
+
         for bullet in self.bullets:
             for asteroid in self.asteroids:
                 if bullet.position.distance_to(asteroid.position) < asteroid.radius + BULLET_RADIUS:
@@ -89,6 +112,10 @@ class Game:
                     break
 
     def shipCollisionWithAsteroid(self):
+        """
+        Checks for collisions between the spaceship and asteroids.
+        """
+
         for asteroid in self.asteroids:
             self.shipPoints = [self.spaceShip.P, self.spaceShip.B, self.spaceShip.A, self.spaceShip.C]
             for shipPoint in self.shipPoints:
@@ -97,6 +124,10 @@ class Game:
         return False
         
     def update(self):
+        """
+        Updates the game state.
+        """
+
         if self.score >= self.scoreLimit:
             self.level += 1
             self.asteroidsCountInitial += 2
@@ -118,28 +149,58 @@ class Game:
         self.bulletCollisionWithAsteroid()
 
     def rotateSpaceShip(self, angle):
+        """
+        Rotates the spaceship.
+
+        Args:
+        - angle: Angle in radians
+        """
+
         self.spaceShip.rotate(angle)
 
     def spaceShipAccelerate(self, isAcceleration):
+        """
+        Accelerates or decelerates the spaceship.
+
+        Args:
+        - isAcceleration: True if accelerating, False if decelerating
+        """
+
         if isAcceleration:
             self.spaceShip.accelerate()
         else:
             self.spaceShip.decelerate()
     
     def shootSpaceShip(self):
+        """
+        Initiates shooting from the spaceship.
+        """
+
         self.spaceShip.shoot()
 
     def displayScore(self):
+        """
+        Displays the current score on the screen.
+        """
+
         font = pygame.font.Font(None, 50)
         scoreText = font.render(str(self.score), True, WHITE)
         self.screen.blit(scoreText, (100, 100))
 
     def displayLevel(self):
+        """
+        Displays the current level on the screen.
+        """
+
         font = pygame.font.Font(None, 50)
         levelText = font.render("Level : " + str(self.level), True, WHITE)
         self.screen.blit(levelText, (WIDTH - 100 - levelText.get_width(), 100))
 
     def displayLife(self):
+        """
+        Displays the remaining lives of the spaceship.
+        """
+
         alpha = math.radians(120)
         axe = pygame.math.Vector2(0, -1)
 
@@ -151,6 +212,10 @@ class Game:
             pygame.draw.polygon(self.screen, RED, [P, B, A, C], 1)
     
     def draw(self):
+        """
+        Displays all.
+        """
+
         if not self.canBeHit:
             self.spaceShip.hitAnimation()
         else:
