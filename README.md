@@ -1,4 +1,5 @@
 # Asteroids
+This project is a revisit of the **Asteroids** game from the 1980s.
 
 ## Installation
 Check that you have a python IDLE.
