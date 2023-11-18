@@ -11,7 +11,12 @@ class Asteroid:
         self.size = size
         self.radius = radius
         self.speed = speed
+        self.oneMoreLife = 0
         self.generateRandomPolygon()
+
+        proba = random.randint(0, 100)
+        if proba < 5:
+            self.oneMoreLife = 1
         
     def generateRandomPolygon(self):
         num_vertices = random.randint(5, 12)
@@ -54,4 +59,7 @@ class Asteroid:
             return []
 
     def draw(self):
-        pygame.draw.polygon(self.screen, (255, 255, 255), [vertex.xy for vertex in self.vertices], 1)
+        if self.oneMoreLife == 0:
+            pygame.draw.polygon(self.screen, WHITE, [vertex.xy for vertex in self.vertices], 1)
+        else:
+            pygame.draw.polygon(self.screen, RED, [vertex.xy for vertex in self.vertices], 1)

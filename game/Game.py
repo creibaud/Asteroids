@@ -81,6 +81,9 @@ class Game:
                     else:
                         self.score += 100
 
+                    if asteroid.oneMoreLife == 1:
+                        self.life += 1
+
                     self.bullets.remove(bullet)
                     self.asteroids.remove(asteroid)
                     break
