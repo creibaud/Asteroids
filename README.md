@@ -1,2 +1,10 @@
 # Asteroids
-To play the game you need python installed in your pc and pygame. After that you need juste to run de main.py script
+
+## Installation
+Vérifier que vous avez un IDLE python.
+La version utiliser pour le projet est python 3.11
+
+Installer Pygame si ce n'est pas déjà fait
+``` bash
+pip install pygame
+```
