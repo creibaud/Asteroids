@@ -1,10 +1,18 @@
 # Asteroids
 
 ## Installation
-Vérifier que vous avez un IDLE python.
-La version utiliser pour le projet est python 3.11
+Check that you have a python IDLE.
+The version used for the project is **python3.11**
 
-Installer Pygame si ce n'est pas déjà fait
-``` bash
+Install Pygame if you haven't done so already
+```bash
 pip install pygame
+```
+
+## How to start the game
+If you're using Visual Studio Code, simply run **main.py**
+
+Otherwise, go directly to the Asteroids file in cmd and run :
+```bash
+python main.py
 ```
