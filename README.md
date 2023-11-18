@@ -23,7 +23,7 @@ The **main.py** file manages the main game loop and the game logic, which includ
 
 The **settings.py** file contains all the game's constants
 
-The **game** folder contains all the files representing one of the game's main classes :
+The **game** folder contains all the files representing one of the game's main classes:
 - **Asteroid.py**, which contains the class *Asteroid*
 - **Bullet.py**, which contains the class *Bullet*
 - **SpaceShip.py**, which contains the class *SpaceShip*
